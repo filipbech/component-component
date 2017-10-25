@@ -21,16 +21,16 @@ import { Component1, Component2 } from '...';
 @Component({
     template: `
     <h1>This is dynamic...</h1>
-    <component [component]="component" [inputs]="inputs"></component>
+    <component [component]="cmp" [inputs]="inp"></component>
     `
 })
 export class HasDynamicContentComponent {
-	public component;
-	public inputs = {};
+	public cmp;
+	public inp = {};
 
 	ngOnInit() {
-        this.component = someCondition ? Component1 : Component2;
-        this.inputs['data'] = data;
+        this.cmp = someCondition ? Component1 : Component2;
+        this.inp['data'] = data;
 	}
 }
 ```
