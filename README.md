@@ -12,25 +12,25 @@ Inputs: a hash of inputs and their values
 
 ## How to use
 ```html
-    <component [component]="cmp" [inputs]="inp"></component>
+	<component [component]="cmp" [inputs]="inp"></component>
 ```
 
 ## Example usage
 ```ts
 import { Component1, Component2 } from '...';
 @Component({
-    template: `
-    <h1>This is dynamic...</h1>
-    <component [component]="cmp" [inputs]="inp"></component>
-    `
+	template: `
+	<h1>This is dynamic...</h1>
+	<component [component]="cmp" [inputs]="inp"></component>
+	`
 })
 export class HasDynamicContentComponent {
 	public cmp;
 	public inp = {};
 
 	ngOnInit() {
-        this.cmp = someCondition ? Component1 : Component2;
-        this.inp['data'] = data;
+		this.cmp = someCondition ? Component1 : Component2;
+		this.inp['data'] = data;
 	}
 }
 ```
