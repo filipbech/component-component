@@ -38,3 +38,28 @@ export class HasDynamicContentComponent {
 }
 ```
 
+Or you can use it in a repeater even more dynamiccally
+
+```ts
+import { GalleryComponent, TextComponent } from '...';
+@Component({
+	template: `
+	<h1>Dynamic list</h1>
+	<component *ngFor="let block of contentBlocks" [component]="block.cmp" [inputs]="block.images"></component>
+	`
+})
+export class HasDynamicListOfContentComponent {
+	contentBlocks = [{
+		cmp: GalleryComponent,
+		data: {
+			images: /* list of images*/
+		}
+	},{
+		cmp: TextComponent,
+		data: {
+			text: 'hello world'
+		}
+	}];
+}
+
+
