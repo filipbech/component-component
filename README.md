@@ -5,6 +5,9 @@ It's a component that renders a component based from an input, so you can use it
 
 Be aware that if the components aren't referenced from a template anywhere else, you need to add them to your ngModules entryComponents so they wont be shaken away from the bundle. 
 
+## Pull-request or issues welcome
+Feel free to use this as is... PRs or issues are appreciated!
+
 ## Inputs
 Component: a ComponentClass that you want displayed 
 
