@@ -13,9 +13,11 @@ Component: a ComponentClass that you want displayed
 
 Inputs: a hash of inputs and their values
 
+Outputs: a hash of component events and their callbacks (optional)
+
 ## How to use
 ```html
-	<component [component]="cmp" [inputs]="inp"></component>
+	<component [component]="cmp" [inputs]="inp" [outputs]="out"></component>
 ```
 
 ## Example usage
@@ -24,16 +26,25 @@ import { Component1, Component2 } from '...';
 @Component({
 	template: `
 	<h1>This is dynamic...</h1>
-	<component [component]="cmp" [inputs]="inp"></component>
+	<component [component]="cmp" [inputs]="inp" [outputs]="out"></component>
 	`
 })
 export class HasDynamicContentComponent {
 	public cmp;
 	public inp = {};
+	public out = { componentEvent: this.callback };
+
+	constructor() {
+		this.callback = this.callback.bind(this); // Bind callback to ensure context
+	}
 
 	ngOnInit() {
 		this.cmp = someCondition ? Component1 : Component2;
 		this.inp['data'] = data;
+	}
+
+	callback() {
+		// Event callback
 	}
 }
 ```
